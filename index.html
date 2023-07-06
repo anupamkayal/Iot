@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Light Switch</title>
+    <script src="script.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        #bulb {
+            width: auto;
+            height: 300px;
+            background-image: url('bulb_off.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0 auto; /* Updated line */
+            display: flex; /* Updated line */
+            justify-content: center; /* Updated line */
+            align-items: center;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .on {
+            background-color: green;
+            color: white;
+        }
+
+        .off {
+            background-color: red;
+            color: white;
+        }
+
+        /* Responsive Styles */
+
+        @media only screen and (max-width: 600px) {
+            #bulb {
+                width: 150px;
+                height: 225px;
+                
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Light Switch</h1>
+    <div id="bulb"></div>
+    <button id="onButton" class="button on" onclick="switchLight('on')">Turn On</button>
+    <button id="offButton" class="button off" onclick="switchLight('off')">Turn Off</button>
+	
+	
+    <script>
+        function switchLight(state) {
+            var bulb = document.getElementById('bulb');
+            var onButton = document.getElementById('onButton');
+            var offButton = document.getElementById('offButton');
+
+            if (state === 'on') {
+                bulb.style.backgroundImage = "url('bulb_on.svg')";
+                onButton.disabled = true;
+                offButton.disabled = false;
+                updateTalkbackCommand('T1');
+            } else {
+                bulb.style.backgroundImage = "url('bulb_off.svg')";
+                onButton.disabled = false;
+                offButton.disabled = true;
+                updateTalkbackCommand('T0');
+            }
+        }
+        
+        
+       
+        
+    </script>
+</body>
+</html>
